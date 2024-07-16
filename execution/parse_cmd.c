@@ -14,7 +14,7 @@ t_cmd	*parse_cmd_list(t_token *token_list)
 		else if (ft_strncmp(token_list->word, "&&", 2) == 0
 			|| ft_strncmp(token_list->word, "||", 2) == 0)
 			parse_cmd_next(token_list, &buffer);
-		else if (is_pipe_token(token))
+		else if (is_pipe_token(token_list))
 		{
 			if (parse_pipe_list(token_list, buffer))
 				return (cmd_list);

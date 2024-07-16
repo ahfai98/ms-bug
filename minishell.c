@@ -111,6 +111,7 @@ int	main(int ac, char **av, char **env)
 	char			**env_list;
 	HIST_ENTRY		**history;
 	char			*user_input;
+	int	g_errno;
 
 	ctrl_c_handler = signal(SIGINT, ctrl_c_function);
 	signal(SIGQUIT, SIG_IGN);

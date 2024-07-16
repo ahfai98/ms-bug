@@ -28,7 +28,23 @@ t_pipe	*pipe_list_init(void)
 	return (pipe_list);
 }
 
+
+int	is_spec_token(t_token *token)
+{
+    if (ft_strchr("|<>()", *token->word))
+        return (1);
+    if (ft_strncmp(token->word, "&&", 2) == 0)
+        return (1);
+    return (0);
+}
+
 int	is_pipe_token(t_token *token)
 {
+	if (is_io_token(token))
+		return (1);
+	if (ft_strncmp(token->word, "|", 1) == 0)
+		return (1);
+	if (!is_spec_token(token))
+		return (1);
 	return (0);
 }

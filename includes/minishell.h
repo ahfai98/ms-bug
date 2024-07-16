@@ -65,7 +65,7 @@ typedef struct s_token_info
 	t_env		*global_env;
 }	t_token_info;
 
-int	g_errno; // Global errno is defined here
+extern int	g_errno; // Global errno is defined here
 
 typedef struct s_exe
 {
@@ -176,6 +176,7 @@ t_cmd	*parse_cmd_list(t_token *token_list);
 void	parse_cmd_recurse(t_token *token_list, t_cmd **buffer);
 void	parse_cmd_next(t_token *token_list, t_cmd **buffer);
 void  print_syntax_error(t_token *token);
+int print_error(t_error error, t_token_info *token_info);
 t_cmd	*cmd_list_init(int operator);
 t_pipe	*pipe_list_init(void);
 int	parse_pipe_next(t_pipe **buffer);
@@ -191,7 +192,8 @@ void	cmd_list_free(t_cmd **cmd_list);
 void	pipe_list_free(t_pipe **pipe_list);
 void	free_args(void *content);
 void	io_list_free(t_io **io_list);
-int		is_pipe_token(token);
+int		is_pipe_token(t_token *token);
+int		is_spec_token(t_token *token);
 
 // execution
 void 	execution(t_token_info *token_info, t_cmd *cmd_list);
